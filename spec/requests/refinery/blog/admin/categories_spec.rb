@@ -22,11 +22,11 @@ describe "Categories admin" do
   context "with translations" do
     before(:each) do
       Refinery::I18n.stub(:frontend_locales).and_return([:en, :ru])
-      blog_page = Factory.create(:page, :link_url => "/blog", :title => "Blog")
-      Globalize.locale = :ru
-      blog_page.title = 'блог'
-      blog_page.save
-      Globalize.locale = :en
+      blog_page = Globalize.with_locale(:en) { FactoryGirl.create(:page, :link_url => "/blog", :title => "Blog") }
+      Globalize.with_locale(:ru) do
+        blog_page.title = 'блог'
+        blog_page.save
+      end
     end
 
     describe "add a category with title for default locale" do
