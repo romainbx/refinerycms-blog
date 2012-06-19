@@ -79,7 +79,8 @@ module Refinery
 
       protected
         def find_post
-          @post = Refinery::Blog::Post.find_by_slug_or_id(params[:id])
+          #@post = Refinery::Blog::Post.find_by_slug_or_id(params[:id])
+          @post = Refinery::Blog::Post.with_globalize.find(params[:id])
         end
 
         def find_all_categories
