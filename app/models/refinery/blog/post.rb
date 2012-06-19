@@ -7,8 +7,8 @@ module Refinery
 
       translates :title, :body, :custom_url, :custom_teaser, :slug, :include => :seo_meta
 
-      extend FriendlyId
-      friendly_id :friendly_id_source, :use => [:slugged, :globalize]
+      # extend FriendlyId
+      # friendly_id :friendly_id_source, :use => [:slugged, :globalize]
 
       is_seo_meta if self.table_exists?
 
